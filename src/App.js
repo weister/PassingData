@@ -98,14 +98,29 @@ const movies = {
 };
 
 class App extends Component {
-  render() {
+  render() {    
+    const userName = profiles.userID
+    console.log("Profiles: ", userName)
     return (
       <div>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">ReactND - Coding Practice</h1>
+          <h1 className="App-title">title</h1>
         </header>
-        <h2>Favorite Movies</h2>
+
+		<ul>
+          <h2>Favorite Movies</h2>
+          {profiles.map((profile) => {
+            const userName = users[profile.userID].name
+            const favMovie = movies[profile.favoriteMovieID].name
+            return(
+              <li key={profile.id} className="profile-list-item">
+				<p>{`${userName}\'s favorite movie is "${favMovie}".`}</p>
+			  </li>
+            )
+          })}
+        </ul>
+
       </div>
     );
   }
